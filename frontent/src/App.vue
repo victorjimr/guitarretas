@@ -1,32 +1,56 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <MainNav :menu="menu"/>
+    <router-view></router-view>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
+import MainNav from '@/components/MainNav'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name:"App",
+  data(){
+    return{
+      user: {},
+      isAuth: false,
+      menu: [
+        {id: 1, path: "/login", name: "Iniciar Sesión"},
+        {id: 2, path: "/register", name: "Registrarse"},
+      ]
     }
+  },
+  async mounted() {
+    this.checkAuth();
+    this.$store.dispatch("checkToken")
+    await this.checkUser()
+    this.setFavs()
+  },
+  methods:{
+    checkAuth(){
+      this.isAuth = window.localStorage.getItem("token")!= null
+    },
+    async checkUser(){
+      if(window.localStorage.getItem("token")!= null){
+        let token = window.localStorage.getItem("token")
+        let userToken = {
+          "token": token
+        }
+        await this.$store.dispatch("getUser", userToken)
+      }
+    },
+    setFavs(){
+      this.$store.commit("setFavs")
+    }
+  },
+  components:{
+    MainNav
   }
 }
+</script>
+
+
+<style lang="scss">
+
 </style>

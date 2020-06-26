@@ -4,10 +4,8 @@
 	id="ftco-navbar">
 
 	<div class="container">
-	  <router-link class="navbar-brand" to="/index"
-		><span class=""></span>Guitar<br /><small
-		  >Comparator {{id}}</small
-		></router-link>
+	  <router-link class="navbar-brand" to="/index"><span class="">Guitarretas</span>
+		</router-link>
         <div v-if="!isAuth" class="collapse navbar-collapse" id="ftco-nav">
 		<ul class="navbar-nav ml-auto">
 		  <li class="nav-item" v-for="item in menu" :key="item.id">

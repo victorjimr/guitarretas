@@ -11,6 +11,8 @@ const Guitar = require('./models/guitars')
 const { ObjectId } = require('mongoose')
 const authMiddleware = require('./middlewares/authentication')
 
+require('./actualizador/actualizer')
+
 const PORT = process.env.PORT || 3000
 const JWT_PASSWORD = config.secret
 const mongoUri = config.mongoConfig
@@ -18,8 +20,6 @@ const mongoUri = config.mongoConfig
 const app = express()
 
 const firebaseParameters = config.firebaseConfig
-
-console.log(firebaseParameters)
 
 firebase.initializeApp(firebaseParameters)
 

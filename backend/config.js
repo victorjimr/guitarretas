@@ -20,14 +20,21 @@ const firebaseConfig = {
 
 const secret = process.env.JWT_PASSWORD || envs.JWT_PASSWORD
 
+const mailAuth = {
+    user: process.env.EMAIL_USER || envs.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD || envs.EMAIL_PASSWORD
+}
+
 const config = {
 	firebaseConfig,
 	mongoConfig,
-	secret
+    secret,
+    mailAuth
 }
 
 exports.firebaseConfig = firebaseConfig
 exports.mongoConfig = mongoConfig
 exports.secret = secret
+exports.mailAuth = mailAuth
 
 module.exports = config;

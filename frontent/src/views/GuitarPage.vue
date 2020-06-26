@@ -1,20 +1,20 @@
 <template>
     <div class="container">
-        <div class="row mt-4 mx-auto">
-            <div class="col-4">
+        <div class="row mt-4 mb-4 mx-auto bg-color-wg">
+            <div class="col-4 mt-4 mb-4">
                 <img :src="guitar.image" class="image img-fluid"  alt="">
             </div>
-            <div class="col-6">
+            <div class="col-6 mt-4">
                 <h4>{{guitar.name}}</h4>
                 <p>{{guitar.description}} Más información en la web.</p>
                 <p>La puedes encontrar por {{guitar.price}} € en:</p>
-                <a :href="'https://www.guitarristas.info/'+guitar.url">https://www.guitarristas.info/{{guitar.url}}</a>
-                <br>
+                <a :href="'https://www.guitarristas.info'+guitar.url">https://www.guitarristas.info{{guitar.url}}</a>
+                <br> <br>
                 <button v-if="!isFav" href="#" @click.prevent="addToFavs(guitar)"
-                class="btn btn-primary py-1 px-1 m-2">Añadir a favoritos
+                class="btn btn-primary mb-4 py-1 px-1 m-2">Añadir a favoritos
                 </button>
                 <button v-else href="#" @click.prevent="removeFromFavs(guitar)"
-                class="btn btn-danger py-1 px-1 m-2">Eliminar de favoritos
+                class="btn btn-danger mb-4 py-1 px-1 m-2">Eliminar de favoritos
                 </button>
             </div>
         </div>
@@ -38,7 +38,7 @@ export default {
     },
   methods:{
       async getGuitar(){
-        let res = await this.$http.get(`http://localhost:3000/guitars/:${this.id}`)
+        let res = await this.$http.get(`https://guitarretas.herokuapp.com/guitars/:${this.id}`)
         this.guitar = res.data.guitar
     },
     checkFav(){

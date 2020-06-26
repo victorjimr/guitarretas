@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="container p-4">
         <form action="#" class="row contact-form">
-          <label class="label" for="#">Encuentra tu guitarra:</label>
+          <label class="label color-wg" for="#">Encuentra tu guitarra:</label>
           <input type="text" v-model="filtro">
         </form>
         <div class="row no-gutters d-flex">
@@ -58,7 +58,7 @@ export default {
   },
   methods:{
     async getGuitars(){
-        let res = await this.$http.get("http://localhost:3000/guitars")
+        let res = await this.$http.get("https://guitarretas.herokuapp.com/guitars")
         this.guitars = res.data.guitars
         this.$store.commit('loadProducts', res.data.guitars)
     },

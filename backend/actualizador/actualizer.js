@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Guitar = require('../models/guitars')
+const cron = require("node-cron")
 const delay = require('./delay')
 
 
@@ -16,4 +17,6 @@ function actualizer(){
     });
 }
 
-//se tiene que hacer diariamente
+cron.schedule("5 * * * *", () => {
+    actualizer();
+})

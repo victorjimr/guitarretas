@@ -1,7 +1,11 @@
 const cheerio = require('cheerio')
 const axios = require('axios')
 const Guitar = require('../models/guitars')
-const mongoose = require('mongoose')
+const User = require('../models/users')
+
+const mailer = require('../mailer/mailer')
+const sendMail = require('../mailer/mailer')
+
 
 async function thommanComparator(guitar){
     let url = guitar.url
@@ -9,7 +13,12 @@ async function thommanComparator(guitar){
     let urlResponse = await axios.get(url)
 
     if(urlResponse.status === 404){
-        Guitar.findOneAndDelete(guitar._id)
+        Guitar.findOneAndDelete({_id:guitar._id})
+        User.find({favGuitars:guitar}).forEach(user =>{
+            let subject = 'Guitarra eliminada'
+            let body = `Hola ${user.firstname}. Parece ser que una guitarra de tus favoritas ha sido eliminada de la web.`
+            sendMail(user.email,subject,body)
+        })
     }
 
     let $ = cheerio.load(urlResponse.data)      
@@ -17,9 +26,20 @@ async function thommanComparator(guitar){
     let webPrice = $('div.prod-pricebox-price-primary').find('span.primary').text().trim().replace(' €', '')
 
     if(guitar.price > parseFloat(webPrice)){
-        sendEmail(guitar)
-       
-        Guitar.findByIdAndUpdate(guitar._id, ({price: webPrice}))
+        try{
+            await Guitar.findOne({_id:id}, (err, foundGuitar) => {
+              if(err){
+                console.log(err)
+                res.status(500).send()
+              }
+              foundGuitar.price = webPrice
+              foundGuitar.save()
+            })
+          }catch(e){
+            console.log(e)
+        }
+        let subject = 'Cambio de precio'
+            let body = `Hola ${user.firstname}. El precio de una guitarra que tenías guardada: ${guitar.name}, ha cambiado.`
+            sendMail(user.email,subject,body)
     }
-
 }

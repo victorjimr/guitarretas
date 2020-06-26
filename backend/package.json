@@ -18,6 +18,8 @@
     "express-bearer-token": "^2.4.0",
     "firebase": "^7.15.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.18"
+    "mongoose": "^5.9.18",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.10"
   }
 }

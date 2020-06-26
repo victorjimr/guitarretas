@@ -68,7 +68,7 @@ export default {
       }
 
       try{
-        await this.$http.post("http://localhost:3000/register", userData)
+        await this.$http.post("https://guitarretas.herokuapp.com/register", userData)
       }catch(e){
         console.log("Se ha producido un error")
       }

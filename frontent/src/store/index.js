@@ -66,19 +66,19 @@ export default new Vuex.Store({
       }
     },
     async setUser(context, loginData){
-      let response = await axios.post("http://localhost:3000/login", loginData)
+      let response = await axios.post("login", loginData)
 
       context.commit('setToken', response.data.token)
       context.commit("setUser", response.data.user)
     },
     async getUser(context, userToken){
-      let response = await axios.post("http://localhost:3000/user", userToken)
+      let response = await axios.post("user", userToken)
       context.commit("setUser", response.data.user)
     },
     async updateUser(context){
       let userData = this.state.user
       console.log(userData)
-      let res = await axios.put("http://localhost:3000/user", this.state.user)
+      let res = await axios.put("user", this.state.user)
     }
   },
   modules: {

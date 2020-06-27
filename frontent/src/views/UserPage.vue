@@ -4,14 +4,16 @@
         <p class = "text-center">{{user.email}}</p>
         <div class="container mb-4">
             <h4 class = "text-center">Favoritas:</h4>
-            <div class="row">
-                <div class="md-3 sm-3 lg-3"></div>
-                <FavGuitar class="md-6 sm-6 lg-6 mb-2" v-for="guitar in user.favGuitars" :key="guitar.id"
-                :price="guitar.price"
-                :name="guitar.name"
-                :id="guitar._id"
-                @removeFromFavs="removeFromFavs(guitar)"/>
-                <div class="md-3 sm-3 lg-3"></div>
+            <div class="container-fluid mb-4">
+                <div class="row justify-content-center">
+                    
+                    <FavGuitar class="col-md-7 mb-2" v-for="guitar in user.favGuitars" :key="guitar.id"
+                    :price="guitar.price"
+                    :name="guitar.name"
+                    :id="guitar._id"
+                    @removeFromFavs="removeFromFavs(guitar)"/>
+                    
+                </div>
             </div>
         </div>
     </div>

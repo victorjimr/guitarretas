@@ -4,7 +4,7 @@
 	id="ftco-navbar">
 
 	<div class="container">
-	  <router-link class="navbar-brand" to="/index"><span class="">Guitarretas</span>
+	  <router-link class="navbar-brand" to="/index"><span class="">GUITARRETAS</span>
 		</router-link>
         <div v-if="!isAuth" class="collapse navbar-collapse" id="ftco-nav">
 		<ul class="navbar-nav ml-auto">

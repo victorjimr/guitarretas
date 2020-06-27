@@ -2,22 +2,24 @@
   <div class="home">
     <div class="container-fluid">
       <div class="container p-4">
-        <form action="#" class="row contact-form">
-          <label class="label color-wg" for="#">Encuentra tu guitarra:</label>
-          <input type="text" v-model="filtro">
+        <form action="#" class="form-group row">
+          <label class="col-sm-2 col-form-label color-wg" for="#">Encuentra tu guitarra:</label>
+          <input class="form-control col-sm-5" type="text" v-model="filtro">
         </form>
         <div class="row no-gutters d-flex">
           <ItemCard v-for="guitar in displayedGuitars" :key="guitar._id"
             :title="guitar.name"
             :image="guitar.image"
             :desc="guitar.description"
+            :price="guitar.price"
             :id="guitar._id"
             :isFav="false"
             @addToFavs="addToFavs(guitar)"
             @removeFromFavs="removeFromFavs(guitar)"
             />
         </div>
-        <div class="btn-group col-md-2 offset-md-5">
+        <div class="pagination">
+          <div class="btn-group col-md-2 offset-md-5">
           <button v-if="page != 1" 
           type="button" class="btn btn-sm btn-otline-secondary"
           @click="page--">Anterior</button>
@@ -30,6 +32,7 @@
           <button v-if="page<pages.length"
           type="button" class="btn btn-sm btn-otline-secondary"
           @click="page++">Siguiente</button>
+          </div>
         </div>
       </div>
     </div>
@@ -46,7 +49,7 @@ export default {
     return{
       guitars:[],
       page: 1,
-      perPage: 10,
+      perPage: 9,
       pages: [],
       searchText: '',
       guitarsSearched:[],

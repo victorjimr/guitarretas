@@ -1,14 +1,15 @@
 <template>
     <div class="container">
         <div class="row mt-4 mb-4 mx-auto bg-color-wg">
-            <div class="col-4 mt-4 mb-4">
+            <div class="col-6 center-block">
                 <img :src="guitar.image" class="image img-fluid"  alt="">
             </div>
             <div class="col-6 mt-4">
                 <h4>{{guitar.name}}</h4>
                 <p>{{guitar.description}} Más información en la web.</p>
                 <p>La puedes encontrar por {{guitar.price}} € en:</p>
-                <a :href="'https://www.guitarristas.info'+guitar.url">https://www.guitarristas.info{{guitar.url}}</a>
+                <a v-if="guitar.website === 'https://www.guitarristas.info' " :href="'https://www.guitarristas.info'+guitar.url">https://www.guitarristas.info{{guitar.url}}</a>
+                <a v-else :href="guitar.url">{{guitar.url}}</a>
                 <br> <br>
                 <button v-if="!isFav" href="#" @click.prevent="addToFavs(guitar)"
                 class="btn btn-primary mb-4 py-1 px-1 m-2">Añadir a favoritos

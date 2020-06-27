@@ -1,5 +1,5 @@
 <template>
-    <div class="card container">
+    <div class="card">
         <div class="card-title text-center">
             <router-link :to="'/guitar/' + id" class="card-title"><h3>{{name}}</h3></router-link>
         </div>

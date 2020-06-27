@@ -1,18 +1,19 @@
 <template>
     <div class="col-lg-4 d-flex ">
-        <div class="services-wrap d-flex card m-2">
-            <img class="image card-img-top" :src="image" >
+        <div class="services-wrap d-flex card shadow m-2">
+            <div class="inner">
+                <img class="card-img-top" :src="image" >
+            </div>
             <div class="text p-4 card-body">
                 <router-link :to="'/guitar/' + id" class="card-title"><h3>{{title}}</h3></router-link>
-                <p> {{desc}} Más información en la web. </p>
-                <p class="price"> </p>
-                <span>{{price}}</span>
-                <button v-if="!isFav" href="#" @click.prevent="addToFavs()"
-                class="btn btn-primary py-3 px-3 m-2">Añadir a favoritos
-                </button>
-                <button v-else href="#" @click.prevent="removeFromFavs()"
-                class="btn btn-danger py-3 px-3 m-2">Eliminar de favoritos
-                </button>
+                <p class="card-text"> {{desc}} Más información en la web. <span>{{price}} €</span></p>
+                
+                    <button v-if="!isFav" href="#" @click.prevent="addToFavs()"
+                class="btn btn-primary py-3 px-3 m-2 center-block">Añadir a favoritos
+                    </button>
+                    <button v-else href="#" @click.prevent="removeFromFavs()"
+                class="btn btn-danger py-3 px-3 m-2 center-block">Eliminar de favoritos
+                    </button>
             </div>
         </div>
     </div>

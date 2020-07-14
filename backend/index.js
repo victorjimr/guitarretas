@@ -27,8 +27,6 @@ app.use(json())
 app.use(cors())
 app.use(bearerToken())
 
-const methodAllowedForUsersAndAdmins = authMiddleware(['user', 'admin'], true)
-
 
 async function checkEmailAndPassword(email, pass) {
   try{
@@ -116,12 +114,20 @@ app.post("/register", async (req,res)=>{
 
     let userData = req.body
 
+    try{
+      let auth = await firebase.auth().createUserWithEmailAndPassword(this.userData.email, this.userData.password)
+      }catch(e){
+        alert(e.message)
+      }
+
     await new User({
         firstname: userData.firstname,
         lastname: userData.lastname,
         email: userData.email,
         profile: 'user'
     }).save()
+    
+    res.json({userData})
 })
 
 app.post("/login", async(req, res) => {

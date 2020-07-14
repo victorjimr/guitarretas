@@ -1,22 +1,17 @@
 <template>
-    <footer>
-        <div class="col-md-12 navbar bg-color-brown color-wg ">
+    <footer class="footer col-md-12 bg-color-brown color-wg">
           <p>
             Copyright 2020
             All rights reserved 
           </p>
-        </div>
     </footer>
 </template>
 
 <style>
-.footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+.myfooter {
+    position: relative;
     width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
+    height: 50px;
+    bottom: 0;
 }
 </style>

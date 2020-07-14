@@ -5,7 +5,7 @@
                 <img :src="guitar.image" class="image img-fluid"  alt="">
             </div>
             <div class="col-6 mt-4">
-                <h4>{{guitar.name}}</h4>
+                <h4 class="titulo-tarjeta">{{guitar.name}}</h4>
                 <p>{{guitar.description}} Más información en la web.</p>
                 <p>La puedes encontrar por {{guitar.price}} € en:</p>
                 <a v-if="guitar.website === 'https://www.guitarristas.info' " :href="'https://www.guitarristas.info'+guitar.url">https://www.guitarristas.info{{guitar.url}}</a>

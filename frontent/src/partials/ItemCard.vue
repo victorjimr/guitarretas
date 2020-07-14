@@ -5,14 +5,14 @@
                 <img class="card-img-top" :src="image" >
             </div>
             <div class="text p-4 card-body">
-                <router-link :to="'/guitar/' + id" class="card-title"><h3>{{title}}</h3></router-link>
+                <router-link :to="'/guitar/' + id" class="card-title"><h3 class="titulo-tarjeta">{{title}}</h3></router-link>
                 <p class="card-text"> {{desc}} Más información en la web. <span>{{price}} €</span></p>
                 
                     <button v-if="!isFav" href="#" @click.prevent="addToFavs()"
                 class="btn btn-primary py-3 px-3 m-2 center-block">Añadir a favoritos
                     </button>
                     <button v-else href="#" @click.prevent="removeFromFavs()"
-                class="btn btn-danger py-3 px-3 m-2 center-block">Eliminar de favoritos
+                class="btn btn-marron py-3 px-3 m-2 center-block">Eliminar de favoritos
                     </button>
             </div>
         </div>
@@ -56,6 +56,7 @@ export default {
 
 <style scoped>
     a{
-      text-decoration: none;
+      text-decoration: inherit;
+      color: inherit;
     }
 </style>

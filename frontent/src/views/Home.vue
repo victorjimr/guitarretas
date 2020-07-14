@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="container p-4">
         <form action="#" class="form-group row">
-          <label class="col-sm-2 col-form-label color-wg" for="#">Encuentra tu guitarra:</label>
+          <label class="col-sm-3 col-form-label label-text" for="#">Encuentra tu guitarra:</label>
           <input class="form-control col-sm-5" type="text" v-model="filtro">
         </form>
         <div class="row no-gutters d-flex">
@@ -18,8 +18,8 @@
             @removeFromFavs="removeFromFavs(guitar)"
             />
         </div>
-        <div class="pagination">
-          <div class="btn-group col-md-2 offset-md-5">
+        <div class="botonera">
+          <div class="row btn-group col-md-4 offset-md-6">
           <button v-if="page != 1" 
           type="button" class="btn btn-sm btn-otline-secondary"
           @click="page--">Anterior</button>
@@ -125,3 +125,4 @@ export default {
   }
 }
 </script>
+

@@ -8,12 +8,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input v-model="email" type="email" class="form-control" placeholder="Your Email">
+                                        <input v-model="email" type="email" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input v-model="password" type="password" class="form-control" placeholder="Your Password">
+                                        <input v-model="password" type="password" class="form-control" placeholder="Contraseña">
                                     </div>
                                 </div>
                             <div class="form-group">

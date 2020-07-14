@@ -7,7 +7,8 @@
             <div class="container-fluid mb-4">
                 <div class="row justify-content-center">
                     
-                    <FavGuitar class="col-md-7 mb-2" v-for="guitar in user.favGuitars" :key="guitar.id"
+                    <FavGuitar class="col-md-5 mb-2" v-for="guitar in user.favGuitars" :key="guitar.id"
+                    :image="guitar.image"
                     :price="guitar.price"
                     :name="guitar.name"
                     :id="guitar._id"

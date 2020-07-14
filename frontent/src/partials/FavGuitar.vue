@@ -1,20 +1,28 @@
 <template>
-    <div class="card">
-        <div class="card-title text-center">
-            <router-link :to="'/guitar/' + id" class="card-title"><h3>{{name}}</h3></router-link>
-        </div>
-        <div class="card-body text-center">
-            <p>{{price}} €</p>
-            <button href="#" @click.prevent="removeFromFavs()"
-                class="btn btn-sm btn-danger py-3 px-3 m-2">Eliminar de favoritos
-            </button>
-        </div>
-    </div>
+    <table class="table">
+        <thead class="text-center">
+            <tr>
+                <th><router-link :to="'/guitar/' + id"><img class="col-sm-6 mb-2" :src="image" alt=""></router-link></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <router-link :to="'/guitar/' + id"><a class="titulo-tarjeta col-sm-6">{{name}}</a></router-link>
+            </tr>
+            <tr>
+                <p class="text-center">{{price}}€</p>
+            <tr class="text-center">
+                <button href="#" @click.prevent="removeFromFavs()"
+                class="btn btn-secondary btn-marron py-2 px- m-3">Eliminar
+                </button>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 <script>
 export default {
-    props:['name', 'id', 'price'],
+    props:['name', 'id', 'price', 'image'],
     methods:{
         removeFromFavs(){
             this.$emit('removeFromFavs')
@@ -25,6 +33,8 @@ export default {
 
 <style scoped>
     a{
-      text-decoration: none;
+      text-decoration: inherit;
+        color: inherit;
+        cursor: auto;
     }
 </style>

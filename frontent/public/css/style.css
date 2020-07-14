@@ -49,7 +49,7 @@
   }
 
 body{
-      background-color: var(--main-soft-blue)
+      background-color: whitesmoke
 }
 
 .inner{
@@ -64,3 +64,32 @@ body{
     transform: scale(1.5);
 }
 
+.titulo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+}
+
+.btn{
+    background-color: var(--main-soft-blue);
+    border-style: none;
+
+}
+
+.btn-marron{
+    color: var(--main-white-grey);
+    background-color: var(--main-brown);
+    border-style: none;
+}
+
+.titulo-tarjeta{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.label-text{
+    font-weight: bold;
+}
+
+.botonera{
+    display: block;
+}

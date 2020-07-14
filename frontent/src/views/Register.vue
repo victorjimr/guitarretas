@@ -8,26 +8,26 @@
                             <div class="row">
                               <div class="col-md-6">
                                     <div class="form-group">
-                                        <input v-model="firstname" type="text" class="form-control" placeholder="Your Name">
+                                        <input v-model="firstname" type="text" class="form-control" placeholder="Nombre">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input v-model="lastname" type="text" class="form-control" placeholder="Your Name">
+                                        <input v-model="lastname" type="text" class="form-control" placeholder="Apellidos">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input v-model="email" type="email" class="form-control" placeholder="Your Email">
+                                        <input v-model="email" type="email" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input v-model="password" type="password" class="form-control" placeholder="Your Password">
+                                        <input v-model="password" type="password" class="form-control" placeholder="Contraseña">
                                     </div>
                                 </div>
                             <div class="form-group">
-                                <input @click.prevent="createUser" type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                                <input @click.prevent="createUser" type="submit" value="Registrarse" class="btn btn-primary py-3 px-5">
                             </div>
                             </div>
                         </form>
@@ -41,8 +41,6 @@
 
 <script>
 
-import firebase from 'firebase'
-
 export default {
   name:"Register",
   data(){
@@ -55,28 +53,20 @@ export default {
   },
   methods:{
     async createUser(){
-      try{
-      let auth = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-      }catch(e){
-        alert(e.message)
-      }
-
       let userData = {
         firstname: this.firstname,
         lastname: this.lastname,
         email: this.email
       }
 
-      try{
-        await this.$http.post("https://guitarretas.herokuapp.com/register", userData)
-      }catch(e){
-        console.log("Se ha producido un error")
-      }
+      this.$store.dispatch("createUser", userData)
 
-      firstname = ""
-      lastname = ""
-      email = ""
-      password = ""
+      this.firstname = ""
+      this.lastname = ""
+      this.email = ""
+      this.password = ""
+      
+      this.$router.push("/")
   }
   }
 }

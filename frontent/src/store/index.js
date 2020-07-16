@@ -65,13 +65,10 @@ export default new Vuex.Store({
         this.commit("setToken", token);
       }
     },
-    async createUser(context,userData){
-        try{
-          let response = await axios.post("register", userData)
-        }catch(e){
-          console.log("Se ha producido un error")
-        }
-        context.dispatch("setUser", response)
+    async createUser(context, userData){
+      let response = await axios.post("register", userData)
+
+      context.dispatch("setUser", response)
     },
     async setUser(context, loginData){
       let response = await axios.post("login", loginData)

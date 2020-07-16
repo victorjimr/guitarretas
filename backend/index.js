@@ -113,21 +113,21 @@ app.get('/guitars/:id', async(req,res)=>{
 app.post("/register", async (req,res)=>{
 
     let userData = req.body
+    
+    let auth = await firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password)
 
-    try{
-      let auth = await firebase.auth().createUserWithEmailAndPassword(this.userData.email, this.userData.password)
-      }catch(e){
-        alert(e.message)
-      }
+    delete userData['password']
 
+    console.log(userData)
+    
     await new User({
         firstname: userData.firstname,
         lastname: userData.lastname,
         email: userData.email,
         profile: 'user'
-    }).save()
+    }).save() 
     
-    res.json({userData})
+     res.json({userData}) 
 })
 
 app.post("/login", async(req, res) => {

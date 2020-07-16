@@ -56,7 +56,8 @@ export default {
       let userData = {
         firstname: this.firstname,
         lastname: this.lastname,
-        email: this.email
+        email: this.email,
+        password: this.password
       }
 
       this.$store.dispatch("createUser", userData)
